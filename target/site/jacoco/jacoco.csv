@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+GesF,com.esprit.examen.services,SessionService,22,3,0,0,7,1,4,1,4,1
+GesF,com.esprit.examen.services,CoursService,58,74,0,0,13,21,1,6,1,6
+GesF,com.esprit.examen.controllers,SessionRestController,26,3,0,0,8,1,4,1,4,1
+GesF,com.esprit.examen.controllers,FormateurRestController,0,3,0,0,0,1,0,1,0,1
+GesF,com.esprit.examen.controllers,CoursRestController,30,3,0,0,9,1,5,1,5,1
+GesF,com.esprit.examen,GesFApplication,5,3,0,0,2,1,1,1,1,1
+GesF,com.esprit.examen.entities,TypeCours,0,34,0,0,0,2,0,1,0,1
+GesF,com.esprit.examen.entities,Cours,59,21,0,0,15,9,10,3,10,3
+GesF,com.esprit.examen.entities,Contrat,0,44,0,0,0,2,0,1,0,1
+GesF,com.esprit.examen.entities,Formateur,134,3,0,0,37,2,20,1,20,1
+GesF,com.esprit.examen.entities,Session,99,3,0,0,29,2,16,1,16,1
+GesF,com.esprit.examen.entities,Poste,0,34,0,0,0,2,0,1,0,1
+GesF,com.esprit.examen.config,LoggingAspect,0,24,0,0,0,5,0,3,0,3

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CoursService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">GesF</a> &gt; <a href="index.source.html" class="el_package">com.esprit.examen.services</a> &gt; <span class="el_source">CoursService.java</span></div><h1>CoursService.java</h1><pre class="source lang-java linenums">package com.esprit.examen.services;
+
+import java.util.List;
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.esprit.examen.entities.Cours;
+import com.esprit.examen.entities.Session;
+import com.esprit.examen.repositories.CoursRepository;
+import com.esprit.examen.repositories.SessionRepository;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+<span class="fc" id="L20">public class CoursService implements ICoursService {</span>
+<span class="fc" id="L21">	private static final Logger log = LogManager.getLogger(CoursService.class);</span>
+
+	@Autowired
+	CoursRepository coursRepository;
+	@Autowired
+	SessionRepository sessionRepository;
+
+	@Override
+	public Long addCours(Cours cours) {
+		try {
+<span class="fc" id="L31">			log.debug(&quot;process saving &quot;, cours);</span>
+<span class="fc" id="L32">			coursRepository.save(cours);</span>
+<span class="fc" id="L33">			log.debug(&quot;cour saved &quot;, cours);</span>
+<span class="nc" id="L34">	}catch (Exception e){</span>
+<span class="nc" id="L35">			log.error(&quot;error while saving cour : &quot;+ e.getMessage());</span>
+<span class="fc" id="L36">		}</span>
+<span class="fc" id="L37">		log.info(&quot;save complete&quot;);</span>
+<span class="fc" id="L38">			return cours.getId();</span>
+	}
+
+	@Override
+	public Long modifierCours(Cours cours) {
+<span class="nc" id="L43">		coursRepository.save(cours);</span>
+<span class="nc" id="L44">		return cours.getId();</span>
+	}
+
+	@Override
+	public void supprimerCours(Long coursId) {
+		try {
+<span class="fc" id="L50">		coursRepository.deleteById(coursId);</span>
+<span class="fc" id="L51">		log.debug(&quot;cour deleted &quot;, coursId);</span>
+<span class="fc" id="L52">		}catch (Exception e){</span>
+<span class="fc" id="L53">			log.error(&quot;error while removing cour : &quot;+ e.getMessage());</span>
+<span class="fc" id="L54">		}</span>
+<span class="fc" id="L55">		log.info(&quot;delete complete&quot;);</span>
+
+<span class="fc" id="L57">	}</span>
+
+	@Override
+	public List&lt;Cours&gt; getCours() {
+
+<span class="fc" id="L62">		List&lt;Cours&gt; cours = coursRepository.findAll();</span>
+<span class="fc" id="L63">		return cours;</span>
+	}
+
+	@Override
+	public void affecterCoursASession(Long coursId, Long sessionId) {
+		
+		try {
+<span class="nc" id="L70">			Cours cours = coursRepository.findById(coursId).get();</span>
+<span class="nc" id="L71">			log.debug(&quot;cour to add&quot;, cours);</span>
+<span class="nc" id="L72">			Session s = sessionRepository.findById(sessionId).get();</span>
+<span class="nc" id="L73">			Set&lt;Cours&gt; coursList = s.getCours();</span>
+<span class="nc" id="L74">		    coursList.add(cours);</span>
+<span class="nc" id="L75">		    s.setCours(coursList);</span>
+<span class="nc" id="L76">		    sessionRepository.save(s);</span>
+<span class="nc" id="L77">			log.debug(&quot;cour added &quot;, cours);</span>
+<span class="fc" id="L78">			}catch (Exception e){</span>
+<span class="fc" id="L79">				log.error(&quot;error while adding cour : &quot;+ e.getMessage());</span>
+<span class="nc" id="L80">			}</span>
+<span class="fc" id="L81">			log.info(&quot;adding complete&quot;);</span>
+
+<span class="fc" id="L83">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

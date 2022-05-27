@@ -1,0 +1,6 @@
+projectKey=com.esprit.examen:GesF
+serverUrl=http://localhost:9000
+serverVersion=6.7.7.38951
+dashboardUrl=http://localhost:9000/dashboard/index/com.esprit.examen:GesF
+ceTaskId=AYEGu0sLbYxfFIxMjEtZ
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYEGu0sLbYxfFIxMjEtZ
